@@ -9,7 +9,6 @@ def calculer_moyenne(notes):
 
     return somme / len(notes)
 
-
 def appreciation(moyenne):
 
     for moy in moyenne:
@@ -22,7 +21,6 @@ def appreciation(moyenne):
         elif 16 <= moy <= 20:
             return "Tres bien"
     return None
-
 
 def construire_resultats(etudiants):
     if len(etudiants) == 0:
@@ -41,6 +39,7 @@ def classer_par_moyenne(resultas):
     for i, value in enumerate(classer_par_moyenne_decroissante):
         print(f"{i+1}. {value[0]} - {value[1].get("moyenne")}")
     #print(tuple(classer_par_moyenne_decroissante[len(classer_par_moyenne_decroissante) - 1]))
+
 def etudiants_en_echec(resultats):
     filtred = dict(filter(lambda  item: item[1].get("moyenne") < 10, resultats.items()))
     return list(map(lambda e: (e[0], e[1].get('moyenne')), filtred.items()))

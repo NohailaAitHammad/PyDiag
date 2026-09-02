@@ -86,8 +86,6 @@ def calculer_moyenne_ponderee(notes,  coefficients):
 
     return total / coff
 
-
-
 def moyenne_groupe(etudiants):
     if len(etudiants) == 0:
         print("Attention: Aucun etudiant fourni.")
