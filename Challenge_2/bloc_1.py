@@ -10,7 +10,6 @@ def tri_a_bull(table):
                 table[j], table[j+1] = table[j+1], table[j]
     return table
 
-
 def notes_au_dessus(table, seuil):
 
     return [n for n in table if n> seuil]
@@ -53,6 +52,6 @@ def main():
     print(fussion_liste(liste_a, liste_b))
     nombres = [3, 12, 7, 25, 8, 19, 2]
     print(caree_nombre_pair(nombres))
-    
+
 if __name__ == "__main__":
     main()
