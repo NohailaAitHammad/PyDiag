@@ -119,7 +119,7 @@ valeurs_test = [9.9, 10.0, 11.9, 12.0, 15.9, 16.0, 20.0]
 for valeur in valeurs_test:
     print(f"{valeur:>6.2f} : {appreciation2(valeur)}")
 
- def appreciation_dict(etudiants):
+def appreciation_dict(etudiants):
     copy_etudiants = deepcopy(etudiants)
 
     for etud in copy_etudiants:

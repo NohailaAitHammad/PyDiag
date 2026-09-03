@@ -1,7 +1,5 @@
-from collections import defaultdict
+keys = ['a','b','c','d','e']
+values = [1, 2, 3, 4, 5, 2,3]
 
-d = defaultdict(float)
-c = []
-
-print(d["noa"])
-print(c)
+d = {k:v for (k,v) in zip(values, keys)}
+print (d)
