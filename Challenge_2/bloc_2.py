@@ -1,4 +1,3 @@
-from _pyrepl import commands
 from collections import defaultdict
 
 
@@ -15,8 +14,8 @@ def vendre(stock, produit, quantite):
         else:
             stock[produit] -= quantite
             print(f"Vente  enregistree  :  {quantite} {produit}.")
-
     return stock
+
 def produits_epuises(stock):
     return list({k:v for k,v in stock.items() if v == 0})
 
@@ -25,7 +24,7 @@ def total_par_client(commandes):
 
     for commande in commandes:
         resultat[commande['client']] += commande['quantite']
-    return resultat
+    return dict(resultat)
 
 def inverse_dict(a):
     return {v:k for k,v in a.items()}
@@ -44,6 +43,7 @@ vendre(stock,  "oranges",  5)
 vendre(stock,  "batata",  5)
 stockk = []
 vendre(stockk,  "batata",  5)
+
 print("**************")
 stock  =  {"pommes":  30,  "bananes":  0,  "oranges":  0,  "kiwis":  12}
 print(produits_epuises(stock))

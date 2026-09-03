@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 
 def tri_a_bull(table):
     n = len(table)
@@ -16,16 +14,17 @@ def notes_au_dessus(table, seuil):
 
 def count_nombre_occurence(table):
     return {x: table.count(x) for x in set(table)}
+
 def reverse_liste(table):
     milieu = len(table)//2
     for i in range(milieu):
         table[i],table[len(table) - i - 1] = table[len(table) - i - 1], table[i]
-
     return table
 
 def fussion_liste(a, b):
     a.extend(b)
     return tri_a_bull(a)
+
 def caree_nombre_pair(liste):
     return [x**2 for x in liste if x%2 == 0]
 

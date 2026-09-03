@@ -77,13 +77,12 @@ print(f"Total  par  produit  : {dict(total_produits)}")
 
 sorted_total_list = list(sorted(total_produits.items(), key=operator.itemgetter(1), reverse=True))
 print(f"Meilleur  produit : {sorted_total_list[0][0]} ({sorted_total_list[0][1]})")
-print(sorted_total_list)
+print(dict(sorted_total_list))
 
 inv1  =  {"pommes":  20,  "bananes":  15}
 inv2  =  {"bananes":  10,  "kiwis":  5}
-print("$$$$$$")
-print(fusionner_inventaires(inv1,inv2))
 
+print(fusionner_inventaires(inv1,inv2))
 
 etudiants  =  [
 {"nom":  "Ali",  "matieres":  {"maths":  14,  "physique":  12}},

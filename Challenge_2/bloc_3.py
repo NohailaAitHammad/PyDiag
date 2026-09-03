@@ -6,9 +6,11 @@ def intersection(a,b):
 
 def difference(a,b):
     return set(a).difference(set(b))
+
 def a_des_doublant(a):
     x= set(a)
     return True if len(a) != len(x) else False
+
 def set_unique(d):
     s = set()
     #for item in d:
