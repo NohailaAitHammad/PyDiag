@@ -38,44 +38,36 @@ def calculer_moyenne_csv(chemin):
 
 calculer_moyenne_csv('notes.csv')
 
-def journal_commandes(stock, commandes, chemain):
-    try:
-        with open(chemain, "w+", encoding="utf-8") as f:
-            for key, value in stock.items():
-                f.write(str(key) +"," + str(value) + '\n')
-            f.seek(0)
+def traiter_journal_commandes(stock, commandes, chemain):
+    with open(chemain, 'w', encoding="utf-8") as f:
+        for commande in commandes:
+            produit, quantite_brute = commande.split(',', 1)
 
-        with open(chemain, 'a+', encoding="utf-8") as f:
-            f.seek(0)
-            stock_liste = f.readlines()
-            print(stock_liste)
-            for commande,item in zip_longest(commandes, stock_liste):
-                #print(commande.split(",", 1)[0] in stock_liste)
-                if item is not None and commande is not None:
-                    if commande.split(",", 1)[0] in item:
-                        if item.split(',', 1)[1].replace('\n', '', 1).isdigit():
-                            quantite = int(item.split(',', 1)[1].replace('\n', '', 1))
-                            #print(f"QUANBTITE{commande.split(",", 1)[1].replace('\n', '', 1)}")
-                            if commande.split(",", 1)[1].replace('\n', '', 1).isdigit():
-                                if quantite < int(commande.split(",", 1)[1]):
-                                    print(f"[ERREUR] stock insuffisant pour {commande.split(",", 1)[0]}")
-                                else:
-                                    new_value = commande.split(",", 1)[0] + ',' + str(quantite-int(commande.split(",", 1)[1])) + '\n'
-                                    idx = stock_liste.index(item)
-                                    stock_liste[idx] = new_value
-                                    print(f"[OK] {commande.split(",", 1)[0]} : -{commande.split(",", 1)[1]} (reste {str(quantite-int(commande.split(",", 1)[1]))}) ")
-                            else:
-                                print(f"[ERREUR] quantite  invalide: {commande.split(",", 1)[1]}")
-                        else:
-                            print(f"[ERREUR] quantite  invalide: {item.split(",", 1)[1]}")
-                    else:
-                        print(f"[ERREUR] {commande.split(",", 1)[0]} : produit inconnu")
+            try:
+                quantite = int(quantite_brute)
 
-            print(stock_liste)
-    except FileNotFoundError:
-        print('File not found')
-    #except StockInsuffisantError as e:
-    #    print(e)
+                if produit not in stock:
+                    raise KeyError(produit)
+
+                if quantite > stock[produit]:
+                    raise StockInsuffisantError(f"stock insuffisant (demande {quantite}, dispo {stock[produit]})")
+
+                stock[produit] -= quantite
+
+                message = f"[OK] {produit} : -{quantite} (reste {stock[produit]})"
+
+            except ValueError:
+                message = f"[ERREUR] {produit} : quantite invalide ({quantite_brute})"
+            except KeyError:
+                message = f"[ERREUR] {produit} : produit inconnu"
+            except StockInsuffisantError as e:
+                message = f"[ERREUR] {produit} : {e}"
+
+            f.write(message + "\n")
+
+    print("\n--- CONTENU DU JOURNAL ---")
+    with open(chemain, "r", encoding="utf-8") as f:
+        print(f.read())
 
 
 stock = {"pommes": 20, "bananes": 4, "oranges": 15}
@@ -83,7 +75,7 @@ commandes_brutes  =  [ "pommes,5",
 "bananes,10", "kiwis,2",
 "oranges,abc", "oranges,5",
 ]
-journal_commandes(stock, commandes_brutes, 'journal.txt')
+traiter_journal_commandes(stock, commandes_brutes, 'journal.txt')
 
 
 

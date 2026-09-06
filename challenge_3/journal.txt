@@ -1,3 +1,5 @@
-pommes,20
-bananes,4
-oranges,15
+[OK] pommes : -5 (reste 15)
+[ERREUR] bananes : stock insuffisant (demande 10, dispo 4)
+[ERREUR] kiwis : produit inconnu
+[ERREUR] oranges : quantite invalide (abc)
+[OK] oranges : -5 (reste 10)
