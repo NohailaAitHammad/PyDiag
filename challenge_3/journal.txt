@@ -1,0 +1,3 @@
+pommes,20
+bananes,4
+oranges,15

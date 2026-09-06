@@ -32,5 +32,22 @@ def compter_lignes(chemin):
 
 compter_lignes('courses.txt')
 
-#modes_a_identifier  =  ["r",  "w",  "a",  "x",  "rb",  "r+"]
+#modes_a_identifier  =  {
+#   "r" : "Read-only. Raises I/O error if file doesn't exist.",
+#   "r+" : "Read and write. Raises I/O error if the file does not exist.Add content at the end of existing content",
+#   "w" : "Read and write, This creates a new file if it doesn’t exist, or overwrites the existing file if it does",
+#   "w+" : "This creates a new file if it doesn’t exist, or overwrites the existing file if it does",
+#   "a" : "Append-only. Adds data to end. Creates file if it doesn't exist.",
+#   "a+" : "Read and append. Pointer at end. Creates file if it doesn't exist.",
+#   "x",
+#   "rb" : "Read in binary mode. File must exist.",
+#   "rb+" : "Read and write in binary mode. File must exist.",
+#   "wb" : "Write in binary. Overwrites or creates new.",
+#   "wb+" : "Read and write in binary. Overwrites or creates new.",
+#   "ab" : "Append in binary. Creates file if not exist.",
+#   "ab+" : "Read and append in binary. Creates file if it does not exist.",
+#   "x" : "création exclusive est spécifié, cela signifie que ce mode ne créera pas de fichier
+#   si le fichier portant le nom spécifié existe déjà, accessible en écriture. ",
+#   "x" : "fichier est ouvert à la fois en lecture et en écriture."
+#}
 
